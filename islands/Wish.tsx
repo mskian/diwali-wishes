@@ -5,17 +5,13 @@ export default function AddProject() {
   const [userName, setTitle] = useState("");
 
   const addProject = () => {
-    if (userName) {
-      const seo_url = slugify(userName, {
-        replacement: "-",
-        remove: /[$*_+~.()'"!\-:@]+/g,
-        lower: false,
-      }) || "Your Name";
-      const pageCatch = encodeURIComponent(seo_url).replace(/%20/g, "-");
-      window.location.href = `/${pageCatch}`;
-    } else {
-      window.location.href = `/`;
-    }
+    const seo_url = slugify(userName, {
+      replacement: "-",
+      remove: /[$*_+~.()'"!\-:@]+/g,
+      lower: false,
+    }) || "Your Name";
+    const pageCatch = encodeURIComponent(seo_url).replace(/%20/g, "-");
+    window.location.href = `/${pageCatch}`;
   };
 
   return (
