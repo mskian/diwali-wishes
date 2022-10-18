@@ -67,7 +67,7 @@ export default function NewProject({ url }: PageProps<null>) {
           crossOrigin="anonymous"
         />
       </Head>
-      <div class="min-h-screen px-4 py-16 mx-auto sm:px-6 lg:px-8 bg-gray-200">
+      <div class="min-h-screen px-4 py-7 mx-auto sm:px-6 lg:px-8 bg-gray-200">
         <div class="max-w-lg mx-auto">
           <img
             src="https://images.weserv.nl/?url=https://img.sanweb.info/dw/dw?name=Your-Name"

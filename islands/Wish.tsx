@@ -1,41 +1,51 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { slugify } from "https://deno.land/x/slugify@0.3.0/mod.ts";
 
 export default function AddProject() {
-  const [userName, setTitle] = useState("");
+  const [username, setTitle] = useState("");
 
-  const addProject = () => {
-    const seo_url = slugify(userName, {
-      replacement: "-",
-      remove: /[$*_+~.()'"!\-:@]+/g,
-      lower: false,
-    }) || "Your Name";
-    const pageCatch = encodeURIComponent(seo_url).replace(/%20/g, "-");
-    window.location.href = `/${pageCatch}`;
+  const subscribe = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
   };
+
+  useEffect(() => {
+    if (username.trim().length !== 0) {
+      const seo_url = slugify(username, {
+        replacement: "-",
+        remove: /[$*_+~.()'"!\-:@]+/g,
+        lower: false,
+      }) || "Your Name";
+      console.log(seo_url);
+      const pageCatch = encodeURIComponent(seo_url).replace(/%20/g, "-");
+      window.location.href = `/${pageCatch}`;
+    } else {
+      console.log("empty input data");
+    }
+  }, [username]);
 
   return (
     <>
-      <div
-        class="p-8 mt-6 mb-0 space-y-4 rounded-lg shadow-2xl"
-        style="background-color: #94a3b8"
-      >
-        <div class="relative mt-1">
-          <input
-            type="text"
-            onChange={(e) => setTitle((e.target as HTMLInputElement).value)}
-            class="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm text-lg"
-            placeholder="Your Name"
-            autocomplete="off"
-            required
-          />
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col justify-center items-center">
+          <form method="GET" className="m-7 flex">
+            <input
+              id="username"
+              name="username"
+              method="POST"
+              className="text-center rounded-l-lg p-0 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
+              placeholder="Your Name"
+              autoComplete="off"
+              onChange={(e) => setTitle((e.target as HTMLInputElement).value)}
+              value={username}
+            />
+            <button
+              onClick={subscribe}
+              className="px-4 rounded-r-lg bg-purple-400 text-gray-800 font-bold p-4 uppercase border-purple-500 border-t border-b border-r"
+            >
+              Create
+            </button>
+          </form>
         </div>
-        <button
-          onClick={() => addProject()}
-          class="block w-full px-5 py-3 text-lg font-medium text-gray-700 bg-purple-200 rounded-lg"
-        >
-          Create Now
-        </button>
       </div>
     </>
   );
