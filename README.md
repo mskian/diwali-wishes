@@ -4,6 +4,8 @@
 
 > Create Happy Diwali Greeting Wishes with Name in image.
 
+- Live Site - <https://diwali.sanweb.info>
+
 ## Usage
 
 Start the project:
