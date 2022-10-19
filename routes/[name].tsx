@@ -102,9 +102,10 @@ export default function Page({ data, url }: PageProps<APIData[] | null>) {
           <div class="flex items-center justify-center">
             <a
               class="bg-purple-500 hover:bg-yellow-600 rounded-md py-2 px-8 text-gray-100 transition-colors focus:outline-none outline-none mt-5 font-bold"
-              href={`https://images.weserv.nl/?url=https://img.sanweb.info/dw/dw?name=` +
+              href={`https://download.mskian.com/image/download.php?url=https://images.weserv.nl/?url=https://img.sanweb.info/dw/dw?name=` +
                 data[0].slug}
-              download={data[0].slug + `.png`}
+              target="_blank"
+              rel="nofollow noreferrer noopener"
             >
               📥 Download
             </a>
